@@ -1,0 +1,362 @@
+[
+  {
+    "english": "dog",
+    "chinese": "狗"
+  },
+  {
+    "english": "cat",
+    "chinese": "貓"
+  },
+  {
+    "english": "bird",
+    "chinese": "鳥"
+  },
+  {
+    "english": "fish",
+    "chinese": "魚"
+  },
+  {
+    "english": "lion",
+    "chinese": "獅子"
+  },
+  {
+    "english": "tiger",
+    "chinese": "老虎"
+  },
+  {
+    "english": "elephant",
+    "chinese": "大象"
+  },
+  {
+    "english": "monkey",
+    "chinese": "猴子"
+  },
+  {
+    "english": "rabbit",
+    "chinese": "兔子"
+  },
+  {
+    "english": "bear",
+    "chinese": "熊"
+  },
+  {
+    "english": "apple",
+    "chinese": "蘋果"
+  },
+  {
+    "english": "banana",
+    "chinese": "香蕉"
+  },
+  {
+    "english": "bread",
+    "chinese": "麵包"
+  },
+  {
+    "english": "rice",
+    "chinese": "米飯"
+  },
+  {
+    "english": "egg",
+    "chinese": "雞蛋"
+  },
+  {
+    "english": "milk",
+    "chinese": "牛奶"
+  },
+  {
+    "english": "water",
+    "chinese": "水"
+  },
+  {
+    "english": "coffee",
+    "chinese": "咖啡"
+  },
+  {
+    "english": "tea",
+    "chinese": "茶"
+  },
+  {
+    "english": "chicken",
+    "chinese": "雞肉"
+  },
+  {
+    "english": "run",
+    "chinese": "跑"
+  },
+  {
+    "english": "jump",
+    "chinese": "跳"
+  },
+  {
+    "english": "eat",
+    "chinese": "吃"
+  },
+  {
+    "english": "sleep",
+    "chinese": "睡覺"
+  },
+  {
+    "english": "drink",
+    "chinese": "喝"
+  },
+  {
+    "english": "read",
+    "chinese": "讀"
+  },
+  {
+    "english": "write",
+    "chinese": "寫"
+  },
+  {
+    "english": "sit",
+    "chinese": "坐"
+  },
+  {
+    "english": "stand",
+    "chinese": "站"
+  },
+  {
+    "english": "walk",
+    "chinese": "走路"
+  },
+  {
+    "english": "book",
+    "chinese": "書"
+  },
+  {
+    "english": "car",
+    "chinese": "車子"
+  },
+  {
+    "english": "chair",
+    "chinese": "椅子"
+  },
+  {
+    "english": "table",
+    "chinese": "桌子"
+  },
+  {
+    "english": "pen",
+    "chinese": "筆"
+  },
+  {
+    "english": "phone",
+    "chinese": "手機"
+  },
+  {
+    "english": "computer",
+    "chinese": "電腦"
+  },
+  {
+    "english": "bag",
+    "chinese": "包包"
+  },
+  {
+    "english": "door",
+    "chinese": "門"
+  },
+  {
+    "english": "window",
+    "chinese": "窗戶"
+  },
+  {
+    "english": "happy",
+    "chinese": "快樂"
+  },
+  {
+    "english": "sad",
+    "chinese": "難過"
+  },
+  {
+    "english": "angry",
+    "chinese": "生氣"
+  },
+  {
+    "english": "scared",
+    "chinese": "害怕"
+  },
+  {
+    "english": "surprised",
+    "chinese": "驚訝"
+  },
+  {
+    "english": "tired",
+    "chinese": "疲倦"
+  },
+  {
+    "english": "calm",
+    "chinese": "冷靜"
+  },
+  {
+    "english": "excited",
+    "chinese": "興奮"
+  },
+  {
+    "english": "bored",
+    "chinese": "無聊"
+  },
+  {
+    "english": "nervous",
+    "chinese": "緊張"
+  },
+  {
+    "english": "sun",
+    "chinese": "太陽"
+  },
+  {
+    "english": "moon",
+    "chinese": "月亮"
+  },
+  {
+    "english": "star",
+    "chinese": "星星"
+  },
+  {
+    "english": "cloud",
+    "chinese": "雲"
+  },
+  {
+    "english": "rain",
+    "chinese": "雨"
+  },
+  {
+    "english": "snow",
+    "chinese": "雪"
+  },
+  {
+    "english": "wind",
+    "chinese": "風"
+  },
+  {
+    "english": "tree",
+    "chinese": "樹"
+  },
+  {
+    "english": "flower",
+    "chinese": "花"
+  },
+  {
+    "english": "river",
+    "chinese": "河流"
+  },
+  {
+    "english": "red",
+    "chinese": "紅色"
+  },
+  {
+    "english": "blue",
+    "chinese": "藍色"
+  },
+  {
+    "english": "green",
+    "chinese": "綠色"
+  },
+  {
+    "english": "yellow",
+    "chinese": "黃色"
+  },
+  {
+    "english": "black",
+    "chinese": "黑色"
+  },
+  {
+    "english": "white",
+    "chinese": "白色"
+  },
+  {
+    "english": "pink",
+    "chinese": "粉紅色"
+  },
+  {
+    "english": "purple",
+    "chinese": "紫色"
+  },
+  {
+    "english": "orange",
+    "chinese": "橘色"
+  },
+  {
+    "english": "brown",
+    "chinese": "棕色"
+  },
+  {
+    "english": "bus",
+    "chinese": "公車"
+  },
+  {
+    "english": "train",
+    "chinese": "火車"
+  },
+  {
+    "english": "plane",
+    "chinese": "飛機"
+  },
+  {
+    "english": "bicycle",
+    "chinese": "腳踏車"
+  },
+  {
+    "english": "motorcycle",
+    "chinese": "摩托車"
+  },
+  {
+    "english": "ship",
+    "chinese": "船"
+  },
+  {
+    "english": "taxi",
+    "chinese": "計程車"
+  },
+  {
+    "english": "subway",
+    "chinese": "地鐵"
+  },
+  {
+    "english": "truck",
+    "chinese": "卡車"
+  },
+  {
+    "english": "helicopter",
+    "chinese": "直升機"
+  },
+  {
+    "english": "head",
+    "chinese": "頭"
+  },
+  {
+    "english": "eye",
+    "chinese": "眼睛"
+  },
+  {
+    "english": "hand",
+    "chinese": "手"
+  },
+  {
+    "english": "foot",
+    "chinese": "腳"
+  },
+  {
+    "english": "mouth",
+    "chinese": "嘴巴"
+  },
+  {
+    "english": "ear",
+    "chinese": "耳朵"
+  },
+  {
+    "english": "nose",
+    "chinese": "鼻子"
+  },
+  {
+    "english": "leg",
+    "chinese": "腿"
+  },
+  {
+    "english": "arm",
+    "chinese": "手臂"
+  },
+  {
+    "english": "hair",
+    "chinese": "頭髮"
+  }
+]
