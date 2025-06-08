@@ -15,6 +15,7 @@ title: JQ英文配對_小遊戲
 
 # 🎮 遊戲介面說明
 這是一款中英文配對小遊戲，目的是透過互動方式，加強單字與意思的記憶。玩家需要將英文單字與正確的中文解釋配對成功，才能完成挑戰！
+
 ![image](https://hackmd.io/_uploads/HkR5hQ7mee.png)
 
 ---
@@ -23,12 +24,14 @@ title: JQ英文配對_小遊戲
 
 ## 1️⃣ 點擊配對
 請點選一個「英文單字」後，再點選對應的「中文解釋」進行配對
+
 ![image](https://hackmd.io/_uploads/HyEza7X7ge.png)
 
 ---
 
 ## 2️⃣ 配對成功 ✨
-若配對正確，該組配對會自動移動到右側的「配對成功清單」中。
+若配對正確，該組配對會自動移動到右側的「配對成功清單」中
+
 ![image](https://hackmd.io/_uploads/Sy-qp77Xxl.png)
 
 
@@ -37,6 +40,7 @@ title: JQ英文配對_小遊戲
 
 ## 3️⃣ 配對失敗 ❌
 若配對錯誤，兩個選項會出現 紅色框，提示此為「錯誤配對」
+
 ![image](https://hackmd.io/_uploads/BkzsaQXXgx.png)
 
 ---
@@ -44,6 +48,7 @@ title: JQ英文配對_小遊戲
 
 ## 4️⃣ 完成全部配對 ✅
 當你正確完成所有單字與意思的配對，即代表本輪挑戰成功！
+
 ![image](https://hackmd.io/_uploads/BJnxA7XXll.png)
 
 
@@ -51,6 +56,7 @@ title: JQ英文配對_小遊戲
 
 ## 5️⃣ 洗牌重新開始 🔄
 點選中間的「🔄 洗牌重新開始」按鈕，即可重新開始一輪全新的配對遊戲
+
 ![image](https://hackmd.io/_uploads/rJ04A7Xmeg.png)
 
 ---
