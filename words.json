@@ -1,362 +1,822 @@
 [
   {
-    "english": "dog",
-    "chinese": "狗"
+    "english": "meeting",
+    "chinese": "會議"
   },
   {
-    "english": "cat",
-    "chinese": "貓"
+    "english": "deadline",
+    "chinese": "截止日期"
   },
   {
-    "english": "bird",
-    "chinese": "鳥"
+    "english": "resume",
+    "chinese": "履歷"
   },
   {
-    "english": "fish",
-    "chinese": "魚"
+    "english": "interview",
+    "chinese": "面試"
   },
   {
-    "english": "lion",
-    "chinese": "獅子"
+    "english": "promotion",
+    "chinese": "升遷"
   },
   {
-    "english": "tiger",
-    "chinese": "老虎"
+    "english": "salary",
+    "chinese": "薪水"
   },
   {
-    "english": "elephant",
-    "chinese": "大象"
+    "english": "client",
+    "chinese": "客戶"
   },
   {
-    "english": "monkey",
-    "chinese": "猴子"
+    "english": "budget",
+    "chinese": "預算"
   },
   {
-    "english": "rabbit",
-    "chinese": "兔子"
+    "english": "invoice",
+    "chinese": "發票"
   },
   {
-    "english": "bear",
-    "chinese": "熊"
+    "english": "negotiation",
+    "chinese": "談判"
   },
   {
-    "english": "apple",
-    "chinese": "蘋果"
+    "english": "contract",
+    "chinese": "合約"
   },
   {
-    "english": "banana",
-    "chinese": "香蕉"
+    "english": "conference",
+    "chinese": "會議"
   },
   {
-    "english": "bread",
-    "chinese": "麵包"
+    "english": "employee",
+    "chinese": "員工"
   },
   {
-    "english": "rice",
-    "chinese": "米飯"
+    "english": "employer",
+    "chinese": "雇主"
   },
   {
-    "english": "egg",
-    "chinese": "雞蛋"
+    "english": "colleague",
+    "chinese": "同事"
   },
   {
-    "english": "milk",
-    "chinese": "牛奶"
+    "english": "schedule",
+    "chinese": "行程表"
   },
   {
-    "english": "water",
-    "chinese": "水"
+    "english": "project",
+    "chinese": "專案"
   },
   {
-    "english": "coffee",
-    "chinese": "咖啡"
+    "english": "presentation",
+    "chinese": "簡報"
   },
   {
-    "english": "tea",
-    "chinese": "茶"
+    "english": "feedback",
+    "chinese": "回饋"
   },
   {
-    "english": "chicken",
-    "chinese": "雞肉"
+    "english": "performance",
+    "chinese": "表現"
   },
   {
-    "english": "run",
-    "chinese": "跑"
+    "english": "training",
+    "chinese": "訓練"
   },
   {
-    "english": "jump",
-    "chinese": "跳"
+    "english": "recruit",
+    "chinese": "招募"
   },
   {
-    "english": "eat",
-    "chinese": "吃"
+    "english": "department",
+    "chinese": "部門"
   },
   {
-    "english": "sleep",
-    "chinese": "睡覺"
+    "english": "attendance",
+    "chinese": "出席"
   },
   {
-    "english": "drink",
-    "chinese": "喝"
+    "english": "announcement",
+    "chinese": "公告"
   },
   {
-    "english": "read",
-    "chinese": "讀"
+    "english": "assignment",
+    "chinese": "任務"
   },
   {
-    "english": "write",
-    "chinese": "寫"
+    "english": "bonus",
+    "chinese": "獎金"
   },
   {
-    "english": "sit",
-    "chinese": "坐"
+    "english": "agreement",
+    "chinese": "協議"
   },
   {
-    "english": "stand",
-    "chinese": "站"
+    "english": "candidate",
+    "chinese": "候選人"
   },
   {
-    "english": "walk",
-    "chinese": "走路"
+    "english": "commute",
+    "chinese": "通勤"
   },
   {
-    "english": "book",
-    "chinese": "書"
+    "english": "consultant",
+    "chinese": "顧問"
   },
   {
-    "english": "car",
-    "chinese": "車子"
+    "english": "consumer",
+    "chinese": "消費者"
   },
   {
-    "english": "chair",
-    "chinese": "椅子"
+    "english": "cost",
+    "chinese": "成本"
   },
   {
-    "english": "table",
-    "chinese": "桌子"
+    "english": "credit",
+    "chinese": "信用"
   },
   {
-    "english": "pen",
-    "chinese": "筆"
+    "english": "currency",
+    "chinese": "貨幣"
   },
   {
-    "english": "phone",
-    "chinese": "手機"
+    "english": "customs",
+    "chinese": "海關"
   },
   {
-    "english": "computer",
-    "chinese": "電腦"
+    "english": "damage",
+    "chinese": "損害"
   },
   {
-    "english": "bag",
-    "chinese": "包包"
+    "english": "delivery",
+    "chinese": "交貨"
   },
   {
-    "english": "door",
-    "chinese": "門"
+    "english": "department",
+    "chinese": "部門"
   },
   {
-    "english": "window",
-    "chinese": "窗戶"
+    "english": "deposit",
+    "chinese": "存款"
   },
   {
-    "english": "happy",
-    "chinese": "快樂"
+    "english": "discount",
+    "chinese": "折扣"
   },
   {
-    "english": "sad",
-    "chinese": "難過"
+    "english": "earnings",
+    "chinese": "收入"
   },
   {
-    "english": "angry",
-    "chinese": "生氣"
+    "english": "equipment",
+    "chinese": "設備"
   },
   {
-    "english": "scared",
-    "chinese": "害怕"
+    "english": "estimate",
+    "chinese": "估價"
   },
   {
-    "english": "surprised",
-    "chinese": "驚訝"
+    "english": "executive",
+    "chinese": "主管"
   },
   {
-    "english": "tired",
-    "chinese": "疲倦"
+    "english": "export",
+    "chinese": "出口"
   },
   {
-    "english": "calm",
-    "chinese": "冷靜"
+    "english": "import",
+    "chinese": "進口"
   },
   {
-    "english": "excited",
-    "chinese": "興奮"
+    "english": "expense",
+    "chinese": "支出"
   },
   {
-    "english": "bored",
-    "chinese": "無聊"
+    "english": "facility",
+    "chinese": "設施"
   },
   {
-    "english": "nervous",
-    "chinese": "緊張"
+    "english": "fund",
+    "chinese": "資金"
   },
   {
-    "english": "sun",
-    "chinese": "太陽"
+    "english": "goods",
+    "chinese": "商品"
   },
   {
-    "english": "moon",
-    "chinese": "月亮"
+    "english": "growth",
+    "chinese": "成長"
   },
   {
-    "english": "star",
-    "chinese": "星星"
+    "english": "headquarters",
+    "chinese": "總部"
   },
   {
-    "english": "cloud",
-    "chinese": "雲"
+    "english": "inspection",
+    "chinese": "檢查"
   },
   {
-    "english": "rain",
-    "chinese": "雨"
+    "english": "insurance",
+    "chinese": "保險"
   },
   {
-    "english": "snow",
-    "chinese": "雪"
+    "english": "inventory",
+    "chinese": "存貨"
   },
   {
-    "english": "wind",
-    "chinese": "風"
+    "english": "investment",
+    "chinese": "投資"
   },
   {
-    "english": "tree",
-    "chinese": "樹"
+    "english": "invoice",
+    "chinese": "發票"
   },
   {
-    "english": "flower",
-    "chinese": "花"
+    "english": "labor",
+    "chinese": "勞工"
   },
   {
-    "english": "river",
-    "chinese": "河流"
+    "english": "loan",
+    "chinese": "貸款"
   },
   {
-    "english": "red",
-    "chinese": "紅色"
+    "english": "logistics",
+    "chinese": "物流"
   },
   {
-    "english": "blue",
-    "chinese": "藍色"
+    "english": "maintenance",
+    "chinese": "維護"
   },
   {
-    "english": "green",
-    "chinese": "綠色"
+    "english": "management",
+    "chinese": "管理"
   },
   {
-    "english": "yellow",
-    "chinese": "黃色"
+    "english": "manufacturer",
+    "chinese": "製造商"
   },
   {
-    "english": "black",
-    "chinese": "黑色"
+    "english": "market",
+    "chinese": "市場"
   },
   {
-    "english": "white",
-    "chinese": "白色"
+    "english": "merger",
+    "chinese": "合併"
   },
   {
-    "english": "pink",
-    "chinese": "粉紅色"
+    "english": "notice",
+    "chinese": "通知"
   },
   {
-    "english": "purple",
-    "chinese": "紫色"
+    "english": "offer",
+    "chinese": "提議"
   },
   {
-    "english": "orange",
-    "chinese": "橘色"
+    "english": "order",
+    "chinese": "訂單"
   },
   {
-    "english": "brown",
-    "chinese": "棕色"
+    "english": "output",
+    "chinese": "產出"
   },
   {
-    "english": "bus",
-    "chinese": "公車"
+    "english": "overtime",
+    "chinese": "加班"
   },
   {
-    "english": "train",
-    "chinese": "火車"
+    "english": "package",
+    "chinese": "包裹"
   },
   {
-    "english": "plane",
-    "chinese": "飛機"
+    "english": "partner",
+    "chinese": "合作夥伴"
   },
   {
-    "english": "bicycle",
-    "chinese": "腳踏車"
+    "english": "payment",
+    "chinese": "付款"
   },
   {
-    "english": "motorcycle",
-    "chinese": "摩托車"
+    "english": "policy",
+    "chinese": "政策"
   },
   {
-    "english": "ship",
-    "chinese": "船"
+    "english": "product",
+    "chinese": "產品"
   },
   {
-    "english": "taxi",
-    "chinese": "計程車"
+    "english": "profit",
+    "chinese": "利潤"
   },
   {
-    "english": "subway",
-    "chinese": "地鐵"
+    "english": "promotion",
+    "chinese": "促銷／升遷"
   },
   {
-    "english": "truck",
-    "chinese": "卡車"
+    "english": "purchase",
+    "chinese": "購買"
   },
   {
-    "english": "helicopter",
-    "chinese": "直升機"
+    "english": "quotation",
+    "chinese": "報價"
   },
   {
-    "english": "head",
-    "chinese": "頭"
+    "english": "reception",
+    "chinese": "接待"
   },
   {
-    "english": "eye",
-    "chinese": "眼睛"
+    "english": "refund",
+    "chinese": "退款"
   },
   {
-    "english": "hand",
-    "chinese": "手"
+    "english": "regulation",
+    "chinese": "規定"
   },
   {
-    "english": "foot",
-    "chinese": "腳"
+    "english": "rent",
+    "chinese": "租金"
   },
   {
-    "english": "mouth",
-    "chinese": "嘴巴"
+    "english": "report",
+    "chinese": "報告"
   },
   {
-    "english": "ear",
-    "chinese": "耳朵"
+    "english": "requirement",
+    "chinese": "需求"
   },
   {
-    "english": "nose",
-    "chinese": "鼻子"
+    "english": "retail",
+    "chinese": "零售"
   },
   {
-    "english": "leg",
-    "chinese": "腿"
+    "english": "revenue",
+    "chinese": "營收"
   },
   {
-    "english": "arm",
-    "chinese": "手臂"
+    "english": "shipment",
+    "chinese": "運送"
   },
   {
-    "english": "hair",
-    "chinese": "頭髮"
+    "english": "signature",
+    "chinese": "簽名"
+  },
+  {
+    "english": "solution",
+    "chinese": "解決方案"
+  },
+  {
+    "english": "staff",
+    "chinese": "員工"
+  },
+  {
+    "english": "stock",
+    "chinese": "股票／庫存"
+  },
+  {
+    "english": "strategy",
+    "chinese": "策略"
+  },
+  {
+    "english": "supplier",
+    "chinese": "供應商"
+  },
+  {
+    "english": "target",
+    "chinese": "目標"
+  },
+  {
+    "english": "task",
+    "chinese": "任務"
+  },
+  {
+    "english": "transaction",
+    "chinese": "交易"
+  },
+  {
+    "english": "vacancy",
+    "chinese": "職缺"
+  },
+  {
+    "english": "warranty",
+    "chinese": "保固"
+  },
+  {
+    "english": "wholesale",
+    "chinese": "批發"
+  },
+  {
+    "english": "withdrawal",
+    "chinese": "提款"
+  },
+  {
+    "english": "workplace",
+    "chinese": "工作場所"
+  },
+  {
+    "english": "accommodation",
+    "chinese": "住宿"
+  },
+  {
+    "english": "agenda",
+    "chinese": "議程"
+  },
+  {
+    "english": "applicant",
+    "chinese": "申請人"
+  },
+  {
+    "english": "authorization",
+    "chinese": "授權"
+  },
+  {
+    "english": "benchmark",
+    "chinese": "基準"
+  },
+  {
+    "english": "broker",
+    "chinese": "經紀人"
+  },
+  {
+    "english": "catalog",
+    "chinese": "目錄"
+  },
+  {
+    "english": "committee",
+    "chinese": "委員會"
+  },
+  {
+    "english": "compensation",
+    "chinese": "補償／薪資報酬"
+  },
+  {
+    "english": "consolidate",
+    "chinese": "合併；強化"
+  },
+  {
+    "english": "contractor",
+    "chinese": "承包商"
+  },
+  {
+    "english": "credential",
+    "chinese": "證書／憑證"
+  },
+  {
+    "english": "deduction",
+    "chinese": "扣除"
+  },
+  {
+    "english": "deficit",
+    "chinese": "赤字"
+  },
+  {
+    "english": "delegation",
+    "chinese": "代表團／委派"
+  },
+  {
+    "english": "deteriorate",
+    "chinese": "惡化"
+  },
+  {
+    "english": "dispute",
+    "chinese": "爭議"
+  },
+  {
+    "english": "dividend",
+    "chinese": "股息"
+  },
+  {
+    "english": "downsize",
+    "chinese": "縮編"
+  },
+  {
+    "english": "entrepreneur",
+    "chinese": "企業家"
+  },
+  {
+    "english": "exceed",
+    "chinese": "超過"
+  },
+  {
+    "english": "expenditure",
+    "chinese": "支出"
+  },
+  {
+    "english": "fiscal",
+    "chinese": "財政的"
+  },
+  {
+    "english": "franchise",
+    "chinese": "特許經營權"
+  },
+  {
+    "english": "freight",
+    "chinese": "貨運"
+  },
+  {
+    "english": "grant",
+    "chinese": "補助金；授予"
+  },
+  {
+    "english": "headcount",
+    "chinese": "人數統計"
+  },
+  {
+    "english": "implement",
+    "chinese": "實施"
+  },
+  {
+    "english": "incentive",
+    "chinese": "獎勵；誘因"
+  },
+  {
+    "english": "incur",
+    "chinese": "招致（損失、債務）"
+  },
+  {
+    "english": "inventory",
+    "chinese": "庫存"
+  },
+  {
+    "english": "liability",
+    "chinese": "責任／負債"
+  },
+  {
+    "english": "log",
+    "chinese": "紀錄"
+  },
+  {
+    "english": "malfunction",
+    "chinese": "故障"
+  },
+  {
+    "english": "mandatory",
+    "chinese": "強制的"
+  },
+  {
+    "english": "memo",
+    "chinese": "備忘錄"
+  },
+  {
+    "english": "outsource",
+    "chinese": "外包"
+  },
+  {
+    "english": "oversee",
+    "chinese": "監督"
+  },
+  {
+    "english": "pending",
+    "chinese": "待處理的；尚未決定的"
+  },
+  {
+    "english": "procurement",
+    "chinese": "採購"
+  },
+  {
+    "english": "prospect",
+    "chinese": "前景；可能性"
+  },
+  {
+    "english": "quota",
+    "chinese": "配額"
+  },
+  {
+    "english": "reimburse",
+    "chinese": "報銷；補償"
+  },
+  {
+    "english": "remittance",
+    "chinese": "匯款"
+  },
+  {
+    "english": "resignation",
+    "chinese": "辭職"
+  },
+  {
+    "english": "specification",
+    "chinese": "規格"
+  },
+  {
+    "english": "subsidiary",
+    "chinese": "子公司"
+  },
+  {
+    "english": "surplus",
+    "chinese": "盈餘"
+  },
+  {
+    "english": "terminate",
+    "chinese": "終止"
+  },
+  {
+    "english": "turnover",
+    "chinese": "營業額／人事流動率"
+  },
+  {
+    "english": "vendor",
+    "chinese": "供應商／小販"
+  },
+  {
+    "english": "allocate",
+    "chinese": "分配"
+  },
+  {
+    "english": "attachment",
+    "chinese": "附件"
+  },
+  {
+    "english": "authorization",
+    "chinese": "授權"
+  },
+  {
+    "english": "bankruptcy",
+    "chinese": "破產"
+  },
+  {
+    "english": "bid",
+    "chinese": "投標"
+  },
+  {
+    "english": "branch",
+    "chinese": "分公司"
+  },
+  {
+    "english": "clarify",
+    "chinese": "釐清"
+  },
+  {
+    "english": "commence",
+    "chinese": "開始"
+  },
+  {
+    "english": "compliance",
+    "chinese": "遵守"
+  },
+  {
+    "english": "confidential",
+    "chinese": "機密的"
+  },
+  {
+    "english": "conjunction",
+    "chinese": "結合；同時發生"
+  },
+  {
+    "english": "consultation",
+    "chinese": "諮詢"
+  },
+  {
+    "english": "contingency",
+    "chinese": "意外事件"
+  },
+  {
+    "english": "convert",
+    "chinese": "轉換"
+  },
+  {
+    "english": "correspondence",
+    "chinese": "信件往來"
+  },
+  {
+    "english": "cutback",
+    "chinese": "削減"
+  },
+  {
+    "english": "defect",
+    "chinese": "缺陷"
+  },
+  {
+    "english": "disbursement",
+    "chinese": "支出；撥款"
+  },
+  {
+    "english": "dispatch",
+    "chinese": "發送"
+  },
+  {
+    "english": "disposal",
+    "chinese": "處理；處置"
+  },
+  {
+    "english": "diversify",
+    "chinese": "多樣化"
+  },
+  {
+    "english": "downtime",
+    "chinese": "停機時間"
+  },
+  {
+    "english": "duplicate",
+    "chinese": "複製"
+  },
+  {
+    "english": "enclosure",
+    "chinese": "附件（信件中）"
+  },
+  {
+    "english": "enroll",
+    "chinese": "註冊；報名"
+  },
+  {
+    "english": "facilitate",
+    "chinese": "促進"
+  },
+  {
+    "english": "fluctuate",
+    "chinese": "波動"
+  },
+  {
+    "english": "guideline",
+    "chinese": "指導方針"
+  },
+  {
+    "english": "implication",
+    "chinese": "可能的影響"
+  },
+  {
+    "english": "interim",
+    "chinese": "暫時的；過渡期的"
+  },
+  {
+    "english": "inventory",
+    "chinese": "庫存清單"
+  },
+  {
+    "english": "ledger",
+    "chinese": "分類帳"
+  },
+  {
+    "english": "liaise",
+    "chinese": "聯絡；協調"
+  },
+  {
+    "english": "minutes",
+    "chinese": "會議紀錄"
+  },
+  {
+    "english": "outlay",
+    "chinese": "支出；費用"
+  },
+  {
+    "english": "overdue",
+    "chinese": "逾期的"
+  },
+  {
+    "english": "preliminary",
+    "chinese": "初步的"
+  },
+  {
+    "english": "restructuring",
+    "chinese": "重組"
+  },
+  {
+    "english": "solicit",
+    "chinese": "徵求；請求"
+  },
+  {
+    "english": "speculate",
+    "chinese": "推測"
+  },
+  {
+    "english": "streamline",
+    "chinese": "精簡；簡化"
+  },
+  {
+    "english": "subsidy",
+    "chinese": "補助金"
+  },
+  {
+    "english": "surcharge",
+    "chinese": "附加費"
+  },
+  {
+    "english": "sustain",
+    "chinese": "維持"
+  },
+  {
+    "english": "testimonial",
+    "chinese": "推薦書；推薦詞"
+  },
+  {
+    "english": "threshold",
+    "chinese": "門檻；臨界點"
+  },
+  {
+    "english": "transaction",
+    "chinese": "交易"
+  },
+  {
+    "english": "unanimous",
+    "chinese": "一致通過的"
+  },
+  {
+    "english": "viable",
+    "chinese": "可行的"
+  },
+  {
+    "english": "withdraw",
+    "chinese": "提取；撤回"
+  },
+  {
+    "english": "withhold",
+    "chinese": "保留；扣住"
   }
 ]
