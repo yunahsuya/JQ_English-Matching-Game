@@ -624,10 +624,6 @@
     "chinese": "附件"
   },
   {
-    "english": "authorization",
-    "chinese": "授權"
-  },
-  {
     "english": "bankruptcy",
     "chinese": "破產"
   },
@@ -736,10 +732,6 @@
     "chinese": "暫時的；過渡期的"
   },
   {
-    "english": "inventory",
-    "chinese": "庫存清單"
-  },
-  {
     "english": "ledger",
     "chinese": "分類帳"
   },
@@ -798,10 +790,6 @@
   {
     "english": "threshold",
     "chinese": "門檻；臨界點"
-  },
-  {
-    "english": "transaction",
-    "chinese": "交易"
   },
   {
     "english": "unanimous",
