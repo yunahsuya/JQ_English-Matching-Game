@@ -1,1230 +1,1231 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>英文單字配對遊戲</title>
-    <!-- 匯入 jquery 函式庫 -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="icon" href="./favicon.ico" />
-    <style>
-      body {
-        height: 100vh;
-        font-family: "微軟正黑體", sans-serif;
-        text-align: center;
-        /* background-color: #fef9f4; */
 
-        background: linear-gradient(
-            rgba(255, 255, 255, 0.7),
-            rgba(255, 255, 255, 0.7)
-          ),
-          url(./dinotaeng.PNG) no-repeat -300px;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <title>英文單字配對遊戲</title>
+  <!-- 匯入 jquery 函式庫 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="icon" href="./favicon.ico" />
+  <style>
+    body {
+      height: 100vh;
+      font-family: "微軟正黑體", sans-serif;
+      text-align: center;
+      /* background-color: #fef9f4; */
 
-      h1 {
-        color: #ff8a65;
-      }
+      background: linear-gradient(rgba(255, 255, 255, 0.7),
+          rgba(255, 255, 255, 0.7)),
+        url(./dinotaeng.PNG) no-repeat -50px;
+    }
 
-      /* 遊戲卡牌(裝遊戲的容器) */
-      #game-container {
-        /* width: 50%; */
-        display: flex;
-        justify-content: center;
-        margin-left: 330px;
-        margin-top: 30px;
-        gap: 50px;
-        flex-wrap: wrap;
-      }
+    h1 {
+      color: #ff8a65;
+    }
 
-      /* 放「英文單字、中文解釋卡片」的容器 */
-      .card-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-      }
+    /* 遊戲卡牌(裝遊戲的容器) */
+    #game-container {
+      /* width: 50%; */
+      display: flex;
+      justify-content: center;
+      margin-left: 330px;
+      margin-top: 30px;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
 
-      /* 卡片樣式 (.card => class) */
-      .card {
-        padding: 15px 25px;
-        background-color: #fff3e0;
-        border: 2px solid #ffb74d;
-        border-radius: 12px;
-        cursor: pointer;
-        min-width: 100px;
-      }
+    /* 放「英文單字、中文解釋卡片」的容器 */
+    .card-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
 
-      /* 選擇時候的樣式 */
-      .selected {
-        background-color: #ffe082;
-        border-color: #ffca28;
-      }
+    /* 卡片樣式 (.card => class) */
+    .card {
+      padding: 15px 25px;
+      background-color: #fff3e0;
+      border: 2px solid #ffb74d;
+      border-radius: 12px;
+      cursor: pointer;
+      min-width: 100px;
+    }
 
-      /* 配對成功 */
-      .matched {
-        background-color: #c8e6c9;
-        border-color: #81c784;
-        pointer-events: none;
+    /* 選擇時候的樣式 */
+    .selected {
+      background-color: #ffe082;
+      border-color: #ffca28;
+    }
 
-        visibility: hidden;
-      }
+    /* 配對成功 */
+    .matched {
+      background-color: #c8e6c9;
+      border-color: #81c784;
+      pointer-events: none;
 
-      /* 錯誤顯示 */
-      .wrong {
-        background-color: #ffcdd2;
-        border-color: #e57373;
-      }
+      visibility: hidden;
+    }
 
-      /* 重置按鈕顏色 */
-      #restart-btn {
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color: #ffb74d;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        color: white;
-      }
+    /* 錯誤顯示 */
+    .wrong {
+      background-color: #ffcdd2;
+      border-color: #e57373;
+    }
 
-      /* (滑過)重置按鈕顏色 */
-      #restart-btn:hover {
-        background-color: #ff9800;
-      }
+    /* 重置按鈕顏色 */
+    #restart-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ffb74d;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color: white;
+    }
 
-      /* 配對成功清單的容器樣式(整體) */
-      #matched-list-container {
-        margin-left: 50px;
-        display: flex;
-        justify-content: right;
-        align-content: center;
-      }
+    /* (滑過)重置按鈕顏色 */
+    #restart-btn:hover {
+      background-color: #ff9800;
+    }
 
-      /* 配對成功清單的容器樣式(細節、內容樣式) */
-      #matched-list {
-        background: #fffde7;
-        border: 2px solid #ffd54f;
-        border-radius: 10px;
-        padding: 15px 25px;
-        min-width: 200px;
+    /* 配對成功清單的容器樣式(整體) */
+    #matched-list-container {
+      margin-left: 50px;
+      display: flex;
+      justify-content: right;
+      align-content: center;
+    }
 
-        text-align: left;
-      }
+    /* 配對成功清單的容器樣式(細節、內容樣式) */
+    #matched-list {
+      background: #fffde7;
+      border: 2px solid #ffd54f;
+      border-radius: 10px;
+      padding: 15px 25px;
+      min-width: 200px;
 
-      /* 配對成功清單的 title */
-      #matched-list-title {
-        color: #ffb300;
-        font-weight: bold;
-        margin-bottom: 10px;
-      }
+      text-align: left;
+    }
 
-      /* 配對成功清單的 ul */
-      #matched-list ul {
-        padding-left: 50px;
-      }
+    /* 配對成功清單的 title */
+    #matched-list-title {
+      color: #ffb300;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
 
-      /* 配對成功清單的 li(項目) */
-      #matched-list ul li {
-        padding-bottom: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>💡 英文單字配對遊戲</h1>
+    /* 配對成功清單的 ul */
+    #matched-list ul {
+      padding-left: 50px;
+    }
 
-    <!-- 重新洗牌 -->
-    <button id="restart-btn">🔄 洗牌重新開始</button>
+    /* 配對成功清單的 li(項目) */
+    #matched-list ul li {
+      padding-bottom: 10px;
+    }
+  </style>
+</head>
 
-    <!-- 裝遊戲的容器 -->
-    <div id="game-container">
-      <!-- 放「英文單字卡片」的容器 -->
-      <div id="english-cards" class="card-container"></div>
-      <!-- 放「中文解釋卡片」的容器 -->
-      <div id="chinese-cards" class="card-container"></div>
+<body>
+  <h1>💡 英文單字配對遊戲</h1>
 
-      <!-- 配對成功清單的容器 -->
-      <!-- 加這層是為了結構清楚、好控制。未來你可能想針對「配對成功的清單」加樣式、動畫或做其他操作時，就能針對這個 #matched-list-container 操作，不會弄到其他區塊 -->
-      <!-- <div id="matched-list-container"> => 多包這層是因為，就像你把玩具放進一個箱子裡，未來要收拾或搬家時，就能整箱搬走，而不是一顆一顆撿 -->
-      <div id="matched-list-container">
-        <!-- 配對成功清單 -->
-        <div id="matched-list">
-          <!-- 顯示 配對成功清單 文字 -->
-          <div id="matched-list-title">✅ 配對成功清單</div>
-          <!-- 配對成功清單 項目 -->
-          <ul id="matched-list-ul"></ul>
-        </div>
+  <!-- 重新洗牌 -->
+  <button id="restart-btn">🔄 洗牌重新開始</button>
+
+  <!-- 裝遊戲的容器 -->
+  <div id="game-container">
+    <!-- 放「英文單字卡片」的容器 -->
+    <div id="english-cards" class="card-container"></div>
+    <!-- 放「中文解釋卡片」的容器 -->
+    <div id="chinese-cards" class="card-container"></div>
+
+    <!-- 配對成功清單的容器 -->
+    <!-- 加這層是為了結構清楚、好控制。未來你可能想針對「配對成功的清單」加樣式、動畫或做其他操作時，就能針對這個 #matched-list-container 操作，不會弄到其他區塊 -->
+    <!-- <div id="matched-list-container"> => 多包這層是因為，就像你把玩具放進一個箱子裡，未來要收拾或搬家時，就能整箱搬走，而不是一顆一顆撿 -->
+    <div id="matched-list-container">
+      <!-- 配對成功清單 -->
+      <div id="matched-list">
+        <!-- 顯示 配對成功清單 文字 -->
+        <div id="matched-list-title">✅ 配對成功清單</div>
+        <!-- 配對成功清單 項目 -->
+        <ul id="matched-list-ul"></ul>
       </div>
     </div>
+  </div>
 
-    <script>
-      // wordData 是一個陣列，裡面放著好幾組「英文單字」跟「中文解釋」的配對「物件」
-      // 每個物件都有兩個欄位：english (英文單字) 和 chinese (中文意思)
-      // 例如：{ english: "apple", chinese: "蘋果" } 就是一組配對資料
-      // 這些資料會用來產生「配對卡片」，讓玩家能點選、配對成功
-      const wordData = [
-        {
-          english: "meeting",
-          chinese: "會議",
-        },
-        {
-          english: "deadline",
-          chinese: "截止日期",
-        },
-        {
-          english: "resume",
-          chinese: "履歷",
-        },
-        {
-          english: "interview",
-          chinese: "面試",
-        },
-        {
-          english: "promotion",
-          chinese: "升遷",
-        },
-        {
-          english: "salary",
-          chinese: "薪水",
-        },
-        {
-          english: "client",
-          chinese: "客戶",
-        },
-        {
-          english: "budget",
-          chinese: "預算",
-        },
-        {
-          english: "invoice",
-          chinese: "發票",
-        },
-        {
-          english: "negotiation",
-          chinese: "談判",
-        },
-        {
-          english: "contract",
-          chinese: "合約",
-        },
-        {
-          english: "conference",
-          chinese: "會議",
-        },
-        {
-          english: "employee",
-          chinese: "員工",
-        },
-        {
-          english: "employer",
-          chinese: "雇主",
-        },
-        {
-          english: "colleague",
-          chinese: "同事",
-        },
-        {
-          english: "schedule",
-          chinese: "行程表",
-        },
-        {
-          english: "project",
-          chinese: "專案",
-        },
-        {
-          english: "presentation",
-          chinese: "簡報",
-        },
-        {
-          english: "feedback",
-          chinese: "回饋",
-        },
-        {
-          english: "performance",
-          chinese: "表現",
-        },
-        {
-          english: "training",
-          chinese: "訓練",
-        },
-        {
-          english: "recruit",
-          chinese: "招募",
-        },
-        {
-          english: "department",
-          chinese: "部門",
-        },
-        {
-          english: "attendance",
-          chinese: "出席",
-        },
-        {
-          english: "announcement",
-          chinese: "公告",
-        },
-        {
-          english: "assignment",
-          chinese: "任務",
-        },
-        {
-          english: "bonus",
-          chinese: "獎金",
-        },
-        {
-          english: "agreement",
-          chinese: "協議",
-        },
-        {
-          english: "candidate",
-          chinese: "候選人",
-        },
-        {
-          english: "commute",
-          chinese: "通勤",
-        },
-        {
-          english: "consultant",
-          chinese: "顧問",
-        },
-        {
-          english: "consumer",
-          chinese: "消費者",
-        },
-        {
-          english: "cost",
-          chinese: "成本",
-        },
-        {
-          english: "credit",
-          chinese: "信用",
-        },
-        {
-          english: "currency",
-          chinese: "貨幣",
-        },
-        {
-          english: "customs",
-          chinese: "海關",
-        },
-        {
-          english: "damage",
-          chinese: "損害",
-        },
-        {
-          english: "delivery",
-          chinese: "交貨",
-        },
-        {
-          english: "department",
-          chinese: "部門",
-        },
-        {
-          english: "deposit",
-          chinese: "存款",
-        },
-        {
-          english: "discount",
-          chinese: "折扣",
-        },
-        {
-          english: "earnings",
-          chinese: "收入",
-        },
-        {
-          english: "equipment",
-          chinese: "設備",
-        },
-        {
-          english: "estimate",
-          chinese: "估價",
-        },
-        {
-          english: "executive",
-          chinese: "主管",
-        },
-        {
-          english: "export",
-          chinese: "出口",
-        },
-        {
-          english: "import",
-          chinese: "進口",
-        },
-        {
-          english: "expense",
-          chinese: "支出",
-        },
-        {
-          english: "facility",
-          chinese: "設施",
-        },
-        {
-          english: "fund",
-          chinese: "資金",
-        },
-        {
-          english: "goods",
-          chinese: "商品",
-        },
-        {
-          english: "growth",
-          chinese: "成長",
-        },
-        {
-          english: "headquarters",
-          chinese: "總部",
-        },
-        {
-          english: "inspection",
-          chinese: "檢查",
-        },
-        {
-          english: "insurance",
-          chinese: "保險",
-        },
-        {
-          english: "inventory",
-          chinese: "存貨",
-        },
-        {
-          english: "investment",
-          chinese: "投資",
-        },
-        {
-          english: "invoice",
-          chinese: "發票",
-        },
-        {
-          english: "labor",
-          chinese: "勞工",
-        },
-        {
-          english: "loan",
-          chinese: "貸款",
-        },
-        {
-          english: "logistics",
-          chinese: "物流",
-        },
-        {
-          english: "maintenance",
-          chinese: "維護",
-        },
-        {
-          english: "management",
-          chinese: "管理",
-        },
-        {
-          english: "manufacturer",
-          chinese: "製造商",
-        },
-        {
-          english: "market",
-          chinese: "市場",
-        },
-        {
-          english: "merger",
-          chinese: "合併",
-        },
-        {
-          english: "notice",
-          chinese: "通知",
-        },
-        {
-          english: "offer",
-          chinese: "提議",
-        },
-        {
-          english: "order",
-          chinese: "訂單",
-        },
-        {
-          english: "output",
-          chinese: "產出",
-        },
-        {
-          english: "overtime",
-          chinese: "加班",
-        },
-        {
-          english: "package",
-          chinese: "包裹",
-        },
-        {
-          english: "partner",
-          chinese: "合作夥伴",
-        },
-        {
-          english: "payment",
-          chinese: "付款",
-        },
-        {
-          english: "policy",
-          chinese: "政策",
-        },
-        {
-          english: "product",
-          chinese: "產品",
-        },
-        {
-          english: "profit",
-          chinese: "利潤",
-        },
-        {
-          english: "promotion",
-          chinese: "促銷／升遷",
-        },
-        {
-          english: "purchase",
-          chinese: "購買",
-        },
-        {
-          english: "quotation",
-          chinese: "報價",
-        },
-        {
-          english: "reception",
-          chinese: "接待",
-        },
-        {
-          english: "refund",
-          chinese: "退款",
-        },
-        {
-          english: "regulation",
-          chinese: "規定",
-        },
-        {
-          english: "rent",
-          chinese: "租金",
-        },
-        {
-          english: "report",
-          chinese: "報告",
-        },
-        {
-          english: "requirement",
-          chinese: "需求",
-        },
-        {
-          english: "retail",
-          chinese: "零售",
-        },
-        {
-          english: "revenue",
-          chinese: "營收",
-        },
-        {
-          english: "shipment",
-          chinese: "運送",
-        },
-        {
-          english: "signature",
-          chinese: "簽名",
-        },
-        {
-          english: "solution",
-          chinese: "解決方案",
-        },
-        {
-          english: "staff",
-          chinese: "員工",
-        },
-        {
-          english: "stock",
-          chinese: "股票／庫存",
-        },
-        {
-          english: "strategy",
-          chinese: "策略",
-        },
-        {
-          english: "supplier",
-          chinese: "供應商",
-        },
-        {
-          english: "target",
-          chinese: "目標",
-        },
-        {
-          english: "task",
-          chinese: "任務",
-        },
-        {
-          english: "transaction",
-          chinese: "交易",
-        },
-        {
-          english: "vacancy",
-          chinese: "職缺",
-        },
-        {
-          english: "warranty",
-          chinese: "保固",
-        },
-        {
-          english: "wholesale",
-          chinese: "批發",
-        },
-        {
-          english: "withdrawal",
-          chinese: "提款",
-        },
-        {
-          english: "workplace",
-          chinese: "工作場所",
-        },
-        {
-          english: "accommodation",
-          chinese: "住宿",
-        },
-        {
-          english: "agenda",
-          chinese: "議程",
-        },
-        {
-          english: "applicant",
-          chinese: "申請人",
-        },
-        {
-          english: "authorization",
-          chinese: "授權",
-        },
-        {
-          english: "benchmark",
-          chinese: "基準",
-        },
-        {
-          english: "broker",
-          chinese: "經紀人",
-        },
-        {
-          english: "catalog",
-          chinese: "目錄",
-        },
-        {
-          english: "committee",
-          chinese: "委員會",
-        },
-        {
-          english: "compensation",
-          chinese: "補償／薪資報酬",
-        },
-        {
-          english: "consolidate",
-          chinese: "合併；強化",
-        },
-        {
-          english: "contractor",
-          chinese: "承包商",
-        },
-        {
-          english: "credential",
-          chinese: "證書／憑證",
-        },
-        {
-          english: "deduction",
-          chinese: "扣除",
-        },
-        {
-          english: "deficit",
-          chinese: "赤字",
-        },
-        {
-          english: "delegation",
-          chinese: "代表團／委派",
-        },
-        {
-          english: "deteriorate",
-          chinese: "惡化",
-        },
-        {
-          english: "dispute",
-          chinese: "爭議",
-        },
-        {
-          english: "dividend",
-          chinese: "股息",
-        },
-        {
-          english: "downsize",
-          chinese: "縮編",
-        },
-        {
-          english: "entrepreneur",
-          chinese: "企業家",
-        },
-        {
-          english: "exceed",
-          chinese: "超過",
-        },
-        {
-          english: "expenditure",
-          chinese: "支出",
-        },
-        {
-          english: "fiscal",
-          chinese: "財政的",
-        },
-        {
-          english: "franchise",
-          chinese: "特許經營權",
-        },
-        {
-          english: "freight",
-          chinese: "貨運",
-        },
-        {
-          english: "grant",
-          chinese: "補助金；授予",
-        },
-        {
-          english: "headcount",
-          chinese: "人數統計",
-        },
-        {
-          english: "implement",
-          chinese: "實施",
-        },
-        {
-          english: "incentive",
-          chinese: "獎勵；誘因",
-        },
-        {
-          english: "incur",
-          chinese: "招致（損失、債務）",
-        },
-        {
-          english: "inventory",
-          chinese: "庫存",
-        },
-        {
-          english: "liability",
-          chinese: "責任／負債",
-        },
-        {
-          english: "log",
-          chinese: "紀錄",
-        },
-        {
-          english: "malfunction",
-          chinese: "故障",
-        },
-        {
-          english: "mandatory",
-          chinese: "強制的",
-        },
-        {
-          english: "memo",
-          chinese: "備忘錄",
-        },
-        {
-          english: "outsource",
-          chinese: "外包",
-        },
-        {
-          english: "oversee",
-          chinese: "監督",
-        },
-        {
-          english: "pending",
-          chinese: "待處理的；尚未決定的",
-        },
-        {
-          english: "procurement",
-          chinese: "採購",
-        },
-        {
-          english: "prospect",
-          chinese: "前景；可能性",
-        },
-        {
-          english: "quota",
-          chinese: "配額",
-        },
-        {
-          english: "reimburse",
-          chinese: "報銷；補償",
-        },
-        {
-          english: "remittance",
-          chinese: "匯款",
-        },
-        {
-          english: "resignation",
-          chinese: "辭職",
-        },
-        {
-          english: "specification",
-          chinese: "規格",
-        },
-        {
-          english: "subsidiary",
-          chinese: "子公司",
-        },
-        {
-          english: "surplus",
-          chinese: "盈餘",
-        },
-        {
-          english: "terminate",
-          chinese: "終止",
-        },
-        {
-          english: "turnover",
-          chinese: "營業額／人事流動率",
-        },
-        {
-          english: "vendor",
-          chinese: "供應商／小販",
-        },
-        {
-          english: "allocate",
-          chinese: "分配",
-        },
-        {
-          english: "attachment",
-          chinese: "附件",
-        },
-        {
-          english: "bankruptcy",
-          chinese: "破產",
-        },
-        {
-          english: "bid",
-          chinese: "投標",
-        },
-        {
-          english: "branch",
-          chinese: "分公司",
-        },
-        {
-          english: "clarify",
-          chinese: "釐清",
-        },
-        {
-          english: "commence",
-          chinese: "開始",
-        },
-        {
-          english: "compliance",
-          chinese: "遵守",
-        },
-        {
-          english: "confidential",
-          chinese: "機密的",
-        },
-        {
-          english: "conjunction",
-          chinese: "結合；同時發生",
-        },
-        {
-          english: "consultation",
-          chinese: "諮詢",
-        },
-        {
-          english: "contingency",
-          chinese: "意外事件",
-        },
-        {
-          english: "convert",
-          chinese: "轉換",
-        },
-        {
-          english: "correspondence",
-          chinese: "信件往來",
-        },
-        {
-          english: "cutback",
-          chinese: "削減",
-        },
-        {
-          english: "defect",
-          chinese: "缺陷",
-        },
-        {
-          english: "disbursement",
-          chinese: "支出；撥款",
-        },
-        {
-          english: "dispatch",
-          chinese: "發送",
-        },
-        {
-          english: "disposal",
-          chinese: "處理；處置",
-        },
-        {
-          english: "diversify",
-          chinese: "多樣化",
-        },
-        {
-          english: "downtime",
-          chinese: "停機時間",
-        },
-        {
-          english: "duplicate",
-          chinese: "複製",
-        },
-        {
-          english: "enclosure",
-          chinese: "附件（信件中）",
-        },
-        {
-          english: "enroll",
-          chinese: "註冊；報名",
-        },
-        {
-          english: "facilitate",
-          chinese: "促進",
-        },
-        {
-          english: "fluctuate",
-          chinese: "波動",
-        },
-        {
-          english: "guideline",
-          chinese: "指導方針",
-        },
-        {
-          english: "implication",
-          chinese: "可能的影響",
-        },
-        {
-          english: "interim",
-          chinese: "暫時的；過渡期的",
-        },
-        {
-          english: "ledger",
-          chinese: "分類帳",
-        },
-        {
-          english: "liaise",
-          chinese: "聯絡；協調",
-        },
-        {
-          english: "minutes",
-          chinese: "會議紀錄",
-        },
-        {
-          english: "outlay",
-          chinese: "支出；費用",
-        },
-        {
-          english: "overdue",
-          chinese: "逾期的",
-        },
-        {
-          english: "preliminary",
-          chinese: "初步的",
-        },
-        {
-          english: "restructuring",
-          chinese: "重組",
-        },
-        {
-          english: "solicit",
-          chinese: "徵求；請求",
-        },
-        {
-          english: "speculate",
-          chinese: "推測",
-        },
-        {
-          english: "streamline",
-          chinese: "精簡；簡化",
-        },
-        {
-          english: "subsidy",
-          chinese: "補助金",
-        },
-        {
-          english: "surcharge",
-          chinese: "附加費",
-        },
-        {
-          english: "sustain",
-          chinese: "維持",
-        },
-        {
-          english: "testimonial",
-          chinese: "推薦書；推薦詞",
-        },
-        {
-          english: "threshold",
-          chinese: "門檻；臨界點",
-        },
-        {
-          english: "unanimous",
-          chinese: "一致通過的",
-        },
-        {
-          english: "viable",
-          chinese: "可行的",
-        },
-        {
-          english: "withdraw",
-          chinese: "提取；撤回",
-        },
-        {
-          english: "withhold",
-          chinese: "保留；扣住",
-        },
-      ];
+  <script>
+    // wordData 是一個陣列，裡面放著好幾組「英文單字」跟「中文解釋」的配對「物件」
+    // 每個物件都有兩個欄位：english (英文單字) 和 chinese (中文意思)
+    // 例如：{ english: "apple", chinese: "蘋果" } 就是一組配對資料
+    // 這些資料會用來產生「配對卡片」，讓玩家能點選、配對成功
+    const wordData = [
+      {
+        english: "meeting",
+        chinese: "會議",
+      },
+      {
+        english: "deadline",
+        chinese: "截止日期",
+      },
+      {
+        english: "resume",
+        chinese: "履歷",
+      },
+      {
+        english: "interview",
+        chinese: "面試",
+      },
+      {
+        english: "promotion",
+        chinese: "升遷",
+      },
+      {
+        english: "salary",
+        chinese: "薪水",
+      },
+      {
+        english: "client",
+        chinese: "客戶",
+      },
+      {
+        english: "budget",
+        chinese: "預算",
+      },
+      {
+        english: "invoice",
+        chinese: "發票",
+      },
+      {
+        english: "negotiation",
+        chinese: "談判",
+      },
+      {
+        english: "contract",
+        chinese: "合約",
+      },
+      {
+        english: "conference",
+        chinese: "會議",
+      },
+      {
+        english: "employee",
+        chinese: "員工",
+      },
+      {
+        english: "employer",
+        chinese: "雇主",
+      },
+      {
+        english: "colleague",
+        chinese: "同事",
+      },
+      {
+        english: "schedule",
+        chinese: "行程表",
+      },
+      {
+        english: "project",
+        chinese: "專案",
+      },
+      {
+        english: "presentation",
+        chinese: "簡報",
+      },
+      {
+        english: "feedback",
+        chinese: "回饋",
+      },
+      {
+        english: "performance",
+        chinese: "表現",
+      },
+      {
+        english: "training",
+        chinese: "訓練",
+      },
+      {
+        english: "recruit",
+        chinese: "招募",
+      },
+      {
+        english: "department",
+        chinese: "部門",
+      },
+      {
+        english: "attendance",
+        chinese: "出席",
+      },
+      {
+        english: "announcement",
+        chinese: "公告",
+      },
+      {
+        english: "assignment",
+        chinese: "任務",
+      },
+      {
+        english: "bonus",
+        chinese: "獎金",
+      },
+      {
+        english: "agreement",
+        chinese: "協議",
+      },
+      {
+        english: "candidate",
+        chinese: "候選人",
+      },
+      {
+        english: "commute",
+        chinese: "通勤",
+      },
+      {
+        english: "consultant",
+        chinese: "顧問",
+      },
+      {
+        english: "consumer",
+        chinese: "消費者",
+      },
+      {
+        english: "cost",
+        chinese: "成本",
+      },
+      {
+        english: "credit",
+        chinese: "信用",
+      },
+      {
+        english: "currency",
+        chinese: "貨幣",
+      },
+      {
+        english: "customs",
+        chinese: "海關",
+      },
+      {
+        english: "damage",
+        chinese: "損害",
+      },
+      {
+        english: "delivery",
+        chinese: "交貨",
+      },
+      {
+        english: "department",
+        chinese: "部門",
+      },
+      {
+        english: "deposit",
+        chinese: "存款",
+      },
+      {
+        english: "discount",
+        chinese: "折扣",
+      },
+      {
+        english: "earnings",
+        chinese: "收入",
+      },
+      {
+        english: "equipment",
+        chinese: "設備",
+      },
+      {
+        english: "estimate",
+        chinese: "估價",
+      },
+      {
+        english: "executive",
+        chinese: "主管",
+      },
+      {
+        english: "export",
+        chinese: "出口",
+      },
+      {
+        english: "import",
+        chinese: "進口",
+      },
+      {
+        english: "expense",
+        chinese: "支出",
+      },
+      {
+        english: "facility",
+        chinese: "設施",
+      },
+      {
+        english: "fund",
+        chinese: "資金",
+      },
+      {
+        english: "goods",
+        chinese: "商品",
+      },
+      {
+        english: "growth",
+        chinese: "成長",
+      },
+      {
+        english: "headquarters",
+        chinese: "總部",
+      },
+      {
+        english: "inspection",
+        chinese: "檢查",
+      },
+      {
+        english: "insurance",
+        chinese: "保險",
+      },
+      {
+        english: "inventory",
+        chinese: "存貨",
+      },
+      {
+        english: "investment",
+        chinese: "投資",
+      },
+      {
+        english: "invoice",
+        chinese: "發票",
+      },
+      {
+        english: "labor",
+        chinese: "勞工",
+      },
+      {
+        english: "loan",
+        chinese: "貸款",
+      },
+      {
+        english: "logistics",
+        chinese: "物流",
+      },
+      {
+        english: "maintenance",
+        chinese: "維護",
+      },
+      {
+        english: "management",
+        chinese: "管理",
+      },
+      {
+        english: "manufacturer",
+        chinese: "製造商",
+      },
+      {
+        english: "market",
+        chinese: "市場",
+      },
+      {
+        english: "merger",
+        chinese: "合併",
+      },
+      {
+        english: "notice",
+        chinese: "通知",
+      },
+      {
+        english: "offer",
+        chinese: "提議",
+      },
+      {
+        english: "order",
+        chinese: "訂單",
+      },
+      {
+        english: "output",
+        chinese: "產出",
+      },
+      {
+        english: "overtime",
+        chinese: "加班",
+      },
+      {
+        english: "package",
+        chinese: "包裹",
+      },
+      {
+        english: "partner",
+        chinese: "合作夥伴",
+      },
+      {
+        english: "payment",
+        chinese: "付款",
+      },
+      {
+        english: "policy",
+        chinese: "政策",
+      },
+      {
+        english: "product",
+        chinese: "產品",
+      },
+      {
+        english: "profit",
+        chinese: "利潤",
+      },
+      {
+        english: "promotion",
+        chinese: "促銷／升遷",
+      },
+      {
+        english: "purchase",
+        chinese: "購買",
+      },
+      {
+        english: "quotation",
+        chinese: "報價",
+      },
+      {
+        english: "reception",
+        chinese: "接待",
+      },
+      {
+        english: "refund",
+        chinese: "退款",
+      },
+      {
+        english: "regulation",
+        chinese: "規定",
+      },
+      {
+        english: "rent",
+        chinese: "租金",
+      },
+      {
+        english: "report",
+        chinese: "報告",
+      },
+      {
+        english: "requirement",
+        chinese: "需求",
+      },
+      {
+        english: "retail",
+        chinese: "零售",
+      },
+      {
+        english: "revenue",
+        chinese: "營收",
+      },
+      {
+        english: "shipment",
+        chinese: "運送",
+      },
+      {
+        english: "signature",
+        chinese: "簽名",
+      },
+      {
+        english: "solution",
+        chinese: "解決方案",
+      },
+      {
+        english: "staff",
+        chinese: "員工",
+      },
+      {
+        english: "stock",
+        chinese: "股票／庫存",
+      },
+      {
+        english: "strategy",
+        chinese: "策略",
+      },
+      {
+        english: "supplier",
+        chinese: "供應商",
+      },
+      {
+        english: "target",
+        chinese: "目標",
+      },
+      {
+        english: "task",
+        chinese: "任務",
+      },
+      {
+        english: "transaction",
+        chinese: "交易",
+      },
+      {
+        english: "vacancy",
+        chinese: "職缺",
+      },
+      {
+        english: "warranty",
+        chinese: "保固",
+      },
+      {
+        english: "wholesale",
+        chinese: "批發",
+      },
+      {
+        english: "withdrawal",
+        chinese: "提款",
+      },
+      {
+        english: "workplace",
+        chinese: "工作場所",
+      },
+      {
+        english: "accommodation",
+        chinese: "住宿",
+      },
+      {
+        english: "agenda",
+        chinese: "議程",
+      },
+      {
+        english: "applicant",
+        chinese: "申請人",
+      },
+      {
+        english: "authorization",
+        chinese: "授權",
+      },
+      {
+        english: "benchmark",
+        chinese: "基準",
+      },
+      {
+        english: "broker",
+        chinese: "經紀人",
+      },
+      {
+        english: "catalog",
+        chinese: "目錄",
+      },
+      {
+        english: "committee",
+        chinese: "委員會",
+      },
+      {
+        english: "compensation",
+        chinese: "補償／薪資報酬",
+      },
+      {
+        english: "consolidate",
+        chinese: "合併；強化",
+      },
+      {
+        english: "contractor",
+        chinese: "承包商",
+      },
+      {
+        english: "credential",
+        chinese: "證書／憑證",
+      },
+      {
+        english: "deduction",
+        chinese: "扣除",
+      },
+      {
+        english: "deficit",
+        chinese: "赤字",
+      },
+      {
+        english: "delegation",
+        chinese: "代表團／委派",
+      },
+      {
+        english: "deteriorate",
+        chinese: "惡化",
+      },
+      {
+        english: "dispute",
+        chinese: "爭議",
+      },
+      {
+        english: "dividend",
+        chinese: "股息",
+      },
+      {
+        english: "downsize",
+        chinese: "縮編",
+      },
+      {
+        english: "entrepreneur",
+        chinese: "企業家",
+      },
+      {
+        english: "exceed",
+        chinese: "超過",
+      },
+      {
+        english: "expenditure",
+        chinese: "支出",
+      },
+      {
+        english: "fiscal",
+        chinese: "財政的",
+      },
+      {
+        english: "franchise",
+        chinese: "特許經營權",
+      },
+      {
+        english: "freight",
+        chinese: "貨運",
+      },
+      {
+        english: "grant",
+        chinese: "補助金；授予",
+      },
+      {
+        english: "headcount",
+        chinese: "人數統計",
+      },
+      {
+        english: "implement",
+        chinese: "實施",
+      },
+      {
+        english: "incentive",
+        chinese: "獎勵；誘因",
+      },
+      {
+        english: "incur",
+        chinese: "招致（損失、債務）",
+      },
+      {
+        english: "inventory",
+        chinese: "庫存",
+      },
+      {
+        english: "liability",
+        chinese: "責任／負債",
+      },
+      {
+        english: "log",
+        chinese: "紀錄",
+      },
+      {
+        english: "malfunction",
+        chinese: "故障",
+      },
+      {
+        english: "mandatory",
+        chinese: "強制的",
+      },
+      {
+        english: "memo",
+        chinese: "備忘錄",
+      },
+      {
+        english: "outsource",
+        chinese: "外包",
+      },
+      {
+        english: "oversee",
+        chinese: "監督",
+      },
+      {
+        english: "pending",
+        chinese: "待處理的；尚未決定的",
+      },
+      {
+        english: "procurement",
+        chinese: "採購",
+      },
+      {
+        english: "prospect",
+        chinese: "前景；可能性",
+      },
+      {
+        english: "quota",
+        chinese: "配額",
+      },
+      {
+        english: "reimburse",
+        chinese: "報銷；補償",
+      },
+      {
+        english: "remittance",
+        chinese: "匯款",
+      },
+      {
+        english: "resignation",
+        chinese: "辭職",
+      },
+      {
+        english: "specification",
+        chinese: "規格",
+      },
+      {
+        english: "subsidiary",
+        chinese: "子公司",
+      },
+      {
+        english: "surplus",
+        chinese: "盈餘",
+      },
+      {
+        english: "terminate",
+        chinese: "終止",
+      },
+      {
+        english: "turnover",
+        chinese: "營業額／人事流動率",
+      },
+      {
+        english: "vendor",
+        chinese: "供應商／小販",
+      },
+      {
+        english: "allocate",
+        chinese: "分配",
+      },
+      {
+        english: "attachment",
+        chinese: "附件",
+      },
+      {
+        english: "bankruptcy",
+        chinese: "破產",
+      },
+      {
+        english: "bid",
+        chinese: "投標",
+      },
+      {
+        english: "branch",
+        chinese: "分公司",
+      },
+      {
+        english: "clarify",
+        chinese: "釐清",
+      },
+      {
+        english: "commence",
+        chinese: "開始",
+      },
+      {
+        english: "compliance",
+        chinese: "遵守",
+      },
+      {
+        english: "confidential",
+        chinese: "機密的",
+      },
+      {
+        english: "conjunction",
+        chinese: "結合；同時發生",
+      },
+      {
+        english: "consultation",
+        chinese: "諮詢",
+      },
+      {
+        english: "contingency",
+        chinese: "意外事件",
+      },
+      {
+        english: "convert",
+        chinese: "轉換",
+      },
+      {
+        english: "correspondence",
+        chinese: "信件往來",
+      },
+      {
+        english: "cutback",
+        chinese: "削減",
+      },
+      {
+        english: "defect",
+        chinese: "缺陷",
+      },
+      {
+        english: "disbursement",
+        chinese: "支出；撥款",
+      },
+      {
+        english: "dispatch",
+        chinese: "發送",
+      },
+      {
+        english: "disposal",
+        chinese: "處理；處置",
+      },
+      {
+        english: "diversify",
+        chinese: "多樣化",
+      },
+      {
+        english: "downtime",
+        chinese: "停機時間",
+      },
+      {
+        english: "duplicate",
+        chinese: "複製",
+      },
+      {
+        english: "enclosure",
+        chinese: "附件（信件中）",
+      },
+      {
+        english: "enroll",
+        chinese: "註冊；報名",
+      },
+      {
+        english: "facilitate",
+        chinese: "促進",
+      },
+      {
+        english: "fluctuate",
+        chinese: "波動",
+      },
+      {
+        english: "guideline",
+        chinese: "指導方針",
+      },
+      {
+        english: "implication",
+        chinese: "可能的影響",
+      },
+      {
+        english: "interim",
+        chinese: "暫時的；過渡期的",
+      },
+      {
+        english: "ledger",
+        chinese: "分類帳",
+      },
+      {
+        english: "liaise",
+        chinese: "聯絡；協調",
+      },
+      {
+        english: "minutes",
+        chinese: "會議紀錄",
+      },
+      {
+        english: "outlay",
+        chinese: "支出；費用",
+      },
+      {
+        english: "overdue",
+        chinese: "逾期的",
+      },
+      {
+        english: "preliminary",
+        chinese: "初步的",
+      },
+      {
+        english: "restructuring",
+        chinese: "重組",
+      },
+      {
+        english: "solicit",
+        chinese: "徵求；請求",
+      },
+      {
+        english: "speculate",
+        chinese: "推測",
+      },
+      {
+        english: "streamline",
+        chinese: "精簡；簡化",
+      },
+      {
+        english: "subsidy",
+        chinese: "補助金",
+      },
+      {
+        english: "surcharge",
+        chinese: "附加費",
+      },
+      {
+        english: "sustain",
+        chinese: "維持",
+      },
+      {
+        english: "testimonial",
+        chinese: "推薦書；推薦詞",
+      },
+      {
+        english: "threshold",
+        chinese: "門檻；臨界點",
+      },
+      {
+        english: "unanimous",
+        chinese: "一致通過的",
+      },
+      {
+        english: "viable",
+        chinese: "可行的",
+      },
+      {
+        english: "withdraw",
+        chinese: "提取；撤回",
+      },
+      {
+        english: "withhold",
+        chinese: "保留；扣住",
+      },
+    ];
 
-      // ________________________________________________________________________________________
+    // ________________________________________________________________________________________
 
-      // 這兩個變數用來記錄玩家目前選擇的卡片
-      // selectedEnglish 紀錄目前選到的「英文卡片」，一開始沒有選，所以是 null
-      let selectedEnglish = null;
+    // 這兩個變數用來記錄玩家目前選擇的卡片
+    // selectedEnglish 紀錄目前選到的「英文卡片」，一開始沒有選，所以是 null
+    let selectedEnglish = null;
 
-      // selectedChinese 紀錄目前選到的「中文卡片」，一開始沒有選，所以是 null
-      let selectedChinese = null;
+    // selectedChinese 紀錄目前選到的「中文卡片」，一開始沒有選，所以是 null
+    let selectedChinese = null;
 
-      // 洗牌函式：用來把陣列裡的元素「隨機打亂順序」
-      // 這樣每次遊戲卡片位置都不同，讓遊戲更有挑戰性
-      // 這個函式使用了「Fisher-Yates 洗牌演算法」，效率又公平
-      function shuffleArray(array) {
-        // 從陣列最後一個元素開始，往前移動
-        for (let i = array.length - 1; i > 0; i--) {
-          // 產生一個介於 0 到 i 的隨機整數 j
-          const j = Math.floor(Math.random() * (i + 1));
-          // 把位置 i 和位置 j 的元素互換
-          [array[i], array[j]] = [array[j], array[i]];
-        }
+    // 洗牌函式：用來把陣列裡的元素「隨機打亂順序」
+    // 這樣每次遊戲卡片位置都不同，讓遊戲更有挑戰性
+    // 這個函式使用了「Fisher-Yates 洗牌演算法」，效率又公平
+    function shuffleArray(array) {
+      // 從陣列最後一個元素開始，往前移動
+      for (let i = array.length - 1; i > 0; i--) {
+        // 產生一個介於 0 到 i 的隨機整數 j
+        const j = Math.floor(Math.random() * (i + 1));
+        // 把位置 i 和位置 j 的元素互換
+        [array[i], array[j]] = [array[j], array[i]];
       }
+    }
 
-      /// renderCards 函式：負責在畫面上「動態生成並顯示卡片」
-      // 這是遊戲最重要的函式，沒有它就看不到任何卡片喔！
-      // 就像你在桌子上擺字卡，讓玩家能看見並點擊配對
-      function renderCards() {
-        // 先把英文卡片區域的內容全部清空
-        $("#english-cards").empty();
-        // 把中文卡片區域的內容也清空
-        $("#chinese-cards").empty();
+    /// renderCards 函式：負責在畫面上「動態生成並顯示卡片」
+    // 這是遊戲最重要的函式，沒有它就看不到任何卡片喔！
+    // 就像你在桌子上擺字卡，讓玩家能看見並點擊配對
+    function renderCards() {
+      // 先把英文卡片區域的內容全部清空
+      $("#english-cards").empty();
+      // 把中文卡片區域的內容也清空
+      $("#chinese-cards").empty();
 
-        // 洗牌
-        shuffleArray(wordData);
+      // 洗牌
+      shuffleArray(wordData);
 
-        // 只取前 5 組單字來顯示
-        const selectedWords = wordData.slice(0, 5);
+      // 只取前 5 組單字來顯示
+      const selectedWords = wordData.slice(0, 5);
 
-        // 複製一份給中文卡片，並洗牌
-        const shuffledChinese = [...selectedWords];
-        shuffleArray(shuffledChinese);
+      // 複製一份給中文卡片，並洗牌
+      const shuffledChinese = [...selectedWords];
+      shuffleArray(shuffledChinese);
 
-        // 產生英文卡片
-        selectedWords.forEach((item) => {
-          $("#english-cards").append(`
+      // 產生英文卡片
+      selectedWords.forEach((item) => {
+        $("#english-cards").append(`
             <div class="card english" data-word="${item.english}">${item.english}</div>
           `);
-        });
+      });
 
-        // 產生中文卡片
-        shuffledChinese.forEach((item) => {
-          $("#chinese-cards").append(`
+      // 產生中文卡片
+      shuffledChinese.forEach((item) => {
+        $("#chinese-cards").append(`
             <div class="card chinese" data-word="${item.english}">${item.chinese}</div>
           `);
-        });
-      }
+      });
+    }
 
-      // 這個函式用來「取消」目前已經選中的卡片狀態，還原所有選擇與錯誤的樣式
-      // 一般在「選錯」或「完成一輪配對」後調用，讓畫面恢復到最初「沒有選中任何卡片」的乾淨狀態
-      function resetSelections() {
-        /*
-          $(".selected").removeClass("selected");
-          把所有有「被選中」樣式的卡片，移除這個選中狀態的 class
-          這樣原本被選的卡片就不會還亮著黃框或其它標示，視覺回復正常
-        */
+    // 這個函式用來「取消」目前已經選中的卡片狀態，還原所有選擇與錯誤的樣式
+    // 一般在「選錯」或「完成一輪配對」後調用，讓畫面恢復到最初「沒有選中任何卡片」的乾淨狀態
+    function resetSelections() {
+      /*
         $(".selected").removeClass("selected");
+        把所有有「被選中」樣式的卡片，移除這個選中狀態的 class
+        這樣原本被選的卡片就不會還亮著黃框或其它標示，視覺回復正常
+      */
+      $(".selected").removeClass("selected");
 
-        /*
-          $(".wrong").removeClass("wrong");
-          移除所有「錯誤」樣式的卡片紅框
-          這樣選錯的卡片紅框不會一直留在畫面上，讓介面清爽
-        */
+      /*
         $(".wrong").removeClass("wrong");
+        移除所有「錯誤」樣式的卡片紅框
+        這樣選錯的卡片紅框不會一直留在畫面上，讓介面清爽
+      */
+      $(".wrong").removeClass("wrong");
 
+      /*
+        把目前暫存的選中英文卡片和中文卡片變數清空
+        表示「手上沒有拿任何卡片」
+        這樣使用者才能重新選擇新的卡片來配對
+      */
+      selectedEnglish = null;
+      // 每次選完後，清除 (不清除的話 => 下次選擇，會是錯誤時的樣式)
+      selectedChinese = null;
+    }
+
+    // 這個函式是用來把「成功配對」的單字對，顯示在頁面下面的配對清單裡
+    // 讓使用者可以看到自己已經完成了哪些英文和中文配對
+    function addMatchedToList(english, chinese) {
+      /*
+        在配對清單的 <ul> 元素中新增一個 <li> 項目
+        內容是「英文單字 - 中文解釋」
+        例如：book - 書
+        這樣讓配對結果更清楚易懂
+     */
+      $("#matched-list-ul").append(`<li>${english} - ${chinese}</li>`);
+    }
+
+    // 重新開始配對遊戲時，把配對清單清空
+    // 避免上次配對的結果還留著，造成混亂
+    function resetMatchedList() {
+      /*
+        把配對清單的所有 <li> 項目清除掉
+        讓清單重新變成空的狀態
+     */
+      $("#matched-list-ul").empty();
+    }
+
+    // 檢查目前選中的兩張卡片是否「配對成功」
+    // 只有同時選到一張英文卡和一張中文卡，才會開始比對
+    function checkMatch() {
+      /*
+        確認已經選到一張英文卡(selectedEnglish)和一張中文卡(selectedChinese)
+        如果沒有選齊兩張，下面的比對就不會執行，避免錯誤發生
+     */
+      if (selectedEnglish && selectedChinese) {
         /*
-          把目前暫存的選中英文卡片和中文卡片變數清空
-          表示「手上沒有拿任何卡片」
-          這樣使用者才能重新選擇新的卡片來配對
+          從英文卡片拿出 data-word 屬性值，這是英文單字本身
+          用 jQuery 的 .data("word") 方法可以輕鬆取得 data-word 裡的值
+          例如：英文卡 data-word="apple"，englishWord 就是 "apple"
         */
-        selectedEnglish = null;
-        // 每次選完後，清除 (不清除的話 => 下次選擇，會是錯誤時的樣式)
-        selectedChinese = null;
-      }
-
-      // 這個函式是用來把「成功配對」的單字對，顯示在頁面下面的配對清單裡
-      // 讓使用者可以看到自己已經完成了哪些英文和中文配對
-      function addMatchedToList(english, chinese) {
+        const englishWord = selectedEnglish.data("word");
         /*
-          在配對清單的 <ul> 元素中新增一個 <li> 項目
-          內容是「英文單字 - 中文解釋」
-          例如：book - 書
-          這樣讓配對結果更清楚易懂
-       */
-        $("#matched-list-ul").append(`<li>${english} - ${chinese}</li>`);
-      }
+          從中文卡片拿出 data-word 屬性值，這裡 data-word 存的是對應的英文單字（方便比對）
+          例如：中文卡 data-word="apple"，chineseWord 就是 "apple"
+        */
+        const chineseWord = selectedChinese.data("word");
 
-      // 重新開始配對遊戲時，把配對清單清空
-      // 避免上次配對的結果還留著，造成混亂
-      function resetMatchedList() {
         /*
-          把配對清單的所有 <li> 項目清除掉
-          讓清單重新變成空的狀態
-       */
-        $("#matched-list-ul").empty();
-      }
+          在所有單字資料 wordData 陣列裡找出「英文單字和你選的中文解釋一樣」的那筆資料
+          .find() 方法會回傳第一個符合條件的物件，像 { english: "apple", chinese: "蘋果" }
+          這樣我們就知道目前配對的正確中文是什麼
+        */
+        const matchedItem = wordData.find(
+          // (item) => item.english === englishWord => 是「條件判斷函式」，意思是：「找一個物件，它裡面的 english 這個 key 的值，跟我們剛剛選的 englishWord 一模一樣
+          // 在所有配對裡面，找一組英文單字跟你剛點選的這個英文單字一樣的那一組
+          // 找到後，就會把這整組物件放到 matchedItem 裡面，像是 { english: "apple", chinese: "蘋果" }
+          (item) => item.english === englishWord
+        );
 
-      // 檢查目前選中的兩張卡片是否「配對成功」
-      // 只有同時選到一張英文卡和一張中文卡，才會開始比對
-      function checkMatch() {
         /*
-          確認已經選到一張英文卡(selectedEnglish)和一張中文卡(selectedChinese)
-          如果沒有選齊兩張，下面的比對就不會執行，避免錯誤發生
-       */
-        if (selectedEnglish && selectedChinese) {
+          判斷英文和中文 data-word 是否一樣
+          這表示使用者選的兩張卡是正確配對的組合
+        */
+        if (englishWord === chineseWord) {
           /*
-            從英文卡片拿出 data-word 屬性值，這是英文單字本身
-            用 jQuery 的 .data("word") 方法可以輕鬆取得 data-word 裡的值
-            例如：英文卡 data-word="apple"，englishWord 就是 "apple"
-          */
-          const englishWord = selectedEnglish.data("word");
-          /*
-            從中文卡片拿出 data-word 屬性值，這裡 data-word 存的是對應的英文單字（方便比對）
-            例如：中文卡 data-word="apple"，chineseWord 就是 "apple"
-          */
-          const chineseWord = selectedChinese.data("word");
+            在正確配對的英文卡片上加上 .matched 樣式
+            讓卡片顯示成配對成功的狀態
+           */
+          selectedEnglish.addClass("matched");
 
           /*
-            在所有單字資料 wordData 陣列裡找出「英文單字和你選的中文解釋一樣」的那筆資料
-            .find() 方法會回傳第一個符合條件的物件，像 { english: "apple", chinese: "蘋果" }
-            這樣我們就知道目前配對的正確中文是什麼
+            在正確配對的中文卡片上也加上 .matched 樣式
+            讓這張卡片也有成功配對的視覺效果
           */
-          const matchedItem = wordData.find(
-            // (item) => item.english === englishWord => 是「條件判斷函式」，意思是：「找一個物件，它裡面的 english 這個 key 的值，跟我們剛剛選的 englishWord 一模一樣
-            // 在所有配對裡面，找一組英文單字跟你剛點選的這個英文單字一樣的那一組
-            // 找到後，就會把這整組物件放到 matchedItem 裡面，像是 { english: "apple", chinese: "蘋果" }
-            (item) => item.english === englishWord
-          );
+          selectedChinese.addClass("matched");
 
-          /*
-            判斷英文和中文 data-word 是否一樣
-            這表示使用者選的兩張卡是正確配對的組合
-          */
-          if (englishWord === chineseWord) {
+          // 新增到配對清單
+          // matchedItem 裡面裝的就是「配對成功的那一組英文＋中文的物件」
+          // matchedItem (變數) => 裡面裝的是 陣列裡面找到的「物件」=> { english: "apple", chinese: "蘋果" }
+          // 物件(這裡的)，它有兩個「key」（鍵）=> english、chinese，兩個「value」（值）=> "apple"、"蘋果"
+          if (matchedItem) {
             /*
-              在正確配對的英文卡片上加上 .matched 樣式
-              讓卡片顯示成配對成功的狀態
-             */
-            selectedEnglish.addClass("matched");
-
-            /*
-              在正確配對的中文卡片上也加上 .matched 樣式
-              讓這張卡片也有成功配對的視覺效果
+              把成功配對的字（英文和中文）新增到配對清單裡
+              方便使用者查看自己已經配對過哪些單字
             */
-            selectedChinese.addClass("matched");
-
-            // 新增到配對清單
-            // matchedItem 裡面裝的就是「配對成功的那一組英文＋中文的物件」
-            // matchedItem (變數) => 裡面裝的是 陣列裡面找到的「物件」=> { english: "apple", chinese: "蘋果" }
-            // 物件(這裡的)，它有兩個「key」（鍵）=> english、chinese，兩個「value」（值）=> "apple"、"蘋果"
-            if (matchedItem) {
-              /*
-                把成功配對的字（英文和中文）新增到配對清單裡
-                方便使用者查看自己已經配對過哪些單字
-              */
-              addMatchedToList(matchedItem.english, matchedItem.chinese);
-            }
-            // 重置 所選(slection)
-            // 完成配對後，會把你剛選的東西清掉，讓你可以繼續配下一組
-            resetSelections();
-            // 如果配對錯了
-          } else {
-            /*
-              如果配對失敗（英文和中文不一致）
-              在選中的卡片上加上錯誤樣式（紅色框框）
-              半秒後自動移除錯誤樣式，讓使用者有機會再試一次
-            */
-            selectedEnglish.addClass("wrong");
-            selectedChinese.addClass("wrong");
-            // setTimeout，意思是會「等一秒」讓你看清楚哪裡錯，然後再把選擇清空，給你重新再來的機會
-            setTimeout(() => {
-              // 避免馬上蓋掉(顯示紅色，延遲一秒)，讓使用者看到錯在哪 (顯示錯誤提示、動畫完再還原)
-              resetSelections();
-            }, 1000);
+            addMatchedToList(matchedItem.english, matchedItem.chinese);
           }
+          // 重置 所選(slection)
+          // 完成配對後，會把你剛選的東西清掉，讓你可以繼續配下一組
+          resetSelections();
+          // 如果配對錯了
+        } else {
+          /*
+            如果配對失敗（英文和中文不一致）
+            在選中的卡片上加上錯誤樣式（紅色框框）
+            半秒後自動移除錯誤樣式，讓使用者有機會再試一次
+          */
+          selectedEnglish.addClass("wrong");
+          selectedChinese.addClass("wrong");
+          // setTimeout，意思是會「等一秒」讓你看清楚哪裡錯，然後再把選擇清空，給你重新再來的機會
+          setTimeout(() => {
+            // 避免馬上蓋掉(顯示紅色，延遲一秒)，讓使用者看到錯在哪 (顯示錯誤提示、動畫完再還原)
+            resetSelections();
+          }, 1000);
         }
       }
+    }
 
-      // 等整個網頁的 HTML 元素都載入完成後，再開始執行裡面的程式碼
-      $(document).ready(function () {
-        // 把英文和中文的卡片動態產生並顯示在畫面上
-        // 這裡同時會用洗牌函式 shuffleArray()，讓卡片順序變亂，看起來更像遊戲
+    // 等整個網頁的 HTML 元素都載入完成後，再開始執行裡面的程式碼
+    $(document).ready(function () {
+      // 把英文和中文的卡片動態產生並顯示在畫面上
+      // 這裡同時會用洗牌函式 shuffleArray()，讓卡片順序變亂，看起來更像遊戲
+      renderCards();
+
+      // 把配對成功的清單清空（剛開始遊戲時，是空的）
+      resetMatchedList();
+
+      // -----------------------------------
+
+      // 監聽「點擊英文卡片」的事件，當使用者點英文卡時要做的事情
+      // 只要點到 class 是 .english 的卡片，就會執行裡面的程式
+      $(document).on("click", ".english", function () {
+        // 如果這張卡已經配對成功過（有 matched 樣式），就不讓它再被點擊，避免重複操作
+        if ($(this).hasClass("matched")) return;
+
+        // 因為只能一次選一張英文卡，點之前先把所有英文卡的「選中」狀態移除
+        // 這樣畫面上只會有一張英文卡亮著，避免多張同時被選
+        $(".english").removeClass("selected");
+
+        // 把目前點擊的這張英文卡用變數 selectedEnglish 記起來，方便後面檢查配對
+        selectedEnglish = $(this);
+
+        // 給這張英文卡加上 .selected 的樣式，讓它看起來被選中了
+        selectedEnglish.addClass("selected");
+
+        // 如果中文卡片也已經選了一張，表示兩張卡都選好了，開始檢查兩張卡是不是配對成功
+        if (selectedChinese) {
+          checkMatch();
+        }
+      });
+
+      // -----------------------------------
+
+      // 監聽「點擊中文卡片」的事件，當使用者點中文卡時要做的事情
+      $(document).on("click", ".chinese", function () {
+        // 如果這張卡已經配對成功過，就不讓它再被點擊
+        if ($(this).hasClass("matched")) return;
+
+        // 先把所有中文卡的「選中」狀態清除，保證只有一張中文卡被選中
+        $(".chinese").removeClass("selected");
+
+        // 把目前點擊的中文卡存到 selectedChinese 變數，方便後面配對檢查
+        selectedChinese = $(this);
+
+        // 給這張中文卡加上 .selected 樣式，讓它有被選中的視覺效果
+        selectedChinese.addClass("selected");
+
+        // 如果英文卡也已經選了一張，就開始檢查兩張卡是不是配對成功
+        if (selectedEnglish) {
+          checkMatch();
+        }
+      });
+
+      // -----------------------------------
+
+      // 監聽「重置按鈕」被點擊的事件，點下去後會重新開始新的一局遊戲
+      $("#restart-btn").click(function () {
+        // 把目前所有選中的卡片狀態清除，恢復成沒選擇的樣子
+        resetSelections();
+
+        // 重新洗牌並把所有卡片渲染到畫面上，開始新遊戲
         renderCards();
 
-        // 把配對成功的清單清空（剛開始遊戲時，是空的）
+        // 把右邊配對成功的清單清空，重置成空白
         resetMatchedList();
-
-        // -----------------------------------
-
-        // 監聽「點擊英文卡片」的事件，當使用者點英文卡時要做的事情
-        // 只要點到 class 是 .english 的卡片，就會執行裡面的程式
-        $(document).on("click", ".english", function () {
-          // 如果這張卡已經配對成功過（有 matched 樣式），就不讓它再被點擊，避免重複操作
-          if ($(this).hasClass("matched")) return;
-
-          // 因為只能一次選一張英文卡，點之前先把所有英文卡的「選中」狀態移除
-          // 這樣畫面上只會有一張英文卡亮著，避免多張同時被選
-          $(".english").removeClass("selected");
-
-          // 把目前點擊的這張英文卡用變數 selectedEnglish 記起來，方便後面檢查配對
-          selectedEnglish = $(this);
-
-          // 給這張英文卡加上 .selected 的樣式，讓它看起來被選中了
-          selectedEnglish.addClass("selected");
-
-          // 如果中文卡片也已經選了一張，表示兩張卡都選好了，開始檢查兩張卡是不是配對成功
-          if (selectedChinese) {
-            checkMatch();
-          }
-        });
-
-        // -----------------------------------
-
-        // 監聽「點擊中文卡片」的事件，當使用者點中文卡時要做的事情
-        $(document).on("click", ".chinese", function () {
-          // 如果這張卡已經配對成功過，就不讓它再被點擊
-          if ($(this).hasClass("matched")) return;
-
-          // 先把所有中文卡的「選中」狀態清除，保證只有一張中文卡被選中
-          $(".chinese").removeClass("selected");
-
-          // 把目前點擊的中文卡存到 selectedChinese 變數，方便後面配對檢查
-          selectedChinese = $(this);
-
-          // 給這張中文卡加上 .selected 樣式，讓它有被選中的視覺效果
-          selectedChinese.addClass("selected");
-
-          // 如果英文卡也已經選了一張，就開始檢查兩張卡是不是配對成功
-          if (selectedEnglish) {
-            checkMatch();
-          }
-        });
-
-        // -----------------------------------
-
-        // 監聽「重置按鈕」被點擊的事件，點下去後會重新開始新的一局遊戲
-        $("#restart-btn").click(function () {
-          // 把目前所有選中的卡片狀態清除，恢復成沒選擇的樣子
-          resetSelections();
-
-          // 重新洗牌並把所有卡片渲染到畫面上，開始新遊戲
-          renderCards();
-
-          // 把右邊配對成功的清單清空，重置成空白
-          resetMatchedList();
-        });
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>
